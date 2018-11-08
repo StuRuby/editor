@@ -2,10 +2,10 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import LineIcon from './LineIcon.jsx'
-import FillIcon from './FillIcon.jsx'
+import FillIcon from './FillIcon.js'
 import SymbolIcon from './SymbolIcon.jsx'
-import BackgroundIcon from './BackgroundIcon.jsx'
-import CircleIcon from './CircleIcon.jsx'
+import BackgroundIcon from './BackgroundIcon.js'
+import CircleIcon from './CircleIcon.js'
 
 class LayerIcon extends React.Component {
   static propTypes = {
