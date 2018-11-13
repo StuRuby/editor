@@ -27,7 +27,7 @@ class NumberInput extends React.Component {
     const value = parseFloat(newValue)
 
     const hasChanged = this.state.value !== value
-    if(this.isValid(value) && hasChanged) {
+    if (this.isValid(value) && hasChanged) {
       this.props.onChange(value)
     } else {
       this.setState({ value: newValue })
@@ -36,15 +36,15 @@ class NumberInput extends React.Component {
 
   isValid(v) {
     const value = parseFloat(v)
-    if(isNaN(value)) {
+    if (isNaN(value)) {
       return false
     }
 
-    if(!isNaN(this.props.min) && value < this.props.min) {
+    if (!isNaN(this.props.min) && value < this.props.min) {
       return false
     }
 
-    if(!isNaN(this.props.max) && value > this.props.max) {
+    if (!isNaN(this.props.max) && value > this.props.max) {
       return false
     }
 
@@ -53,13 +53,13 @@ class NumberInput extends React.Component {
 
   resetValue = () => {
     // Reset explicitly to default value if value has been cleared
-    if(this.state.value === "") {
+    if (this.state.value === "") {
       return this.changeValue(this.props.default)
     }
 
     // If set value is invalid fall back to the last valid value from props or at last resort the default value
-    if(!this.isValid(this.state.value)) {
-      if(this.isValid(this.props.value)) {
+    if (!this.isValid(this.state.value)) {
+      if (this.isValid(this.props.value)) {
         this.changeValue(this.props.value)
       } else {
         this.changeValue(this.props.default)

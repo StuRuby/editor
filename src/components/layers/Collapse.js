@@ -17,7 +17,7 @@ export default class CollapseAlt extends React.Component {
   render() {
     if (accessibility.reducedMotionEnabled()) {
       return (
-        <div style={{display: this.props.isActive ? "block" : "none"}}>
+        <div style={{ display: this.props.isActive ? "block" : "none" }}>
           {this.props.children}
         </div>
       )

@@ -16,7 +16,7 @@ class FontInput extends React.Component {
   }
 
   get values() {
-   return this.props.value || this.props.default.slice(1) || []
+    return this.props.value || this.props.default.slice(1) || []
   }
 
   changeFont(idx, newValue) {

@@ -13,15 +13,15 @@ function tryParseInt(v) {
 }
 
 function tryParseBool(v) {
-  const isString = (typeof(v) === "string");
-  if(!isString) {
+  const isString = (typeof (v) === "string");
+  if (!isString) {
     return v;
   }
 
-  if(v.match(/^\s*true\s*$/)) {
+  if (v.match(/^\s*true\s*$/)) {
     return true;
   }
-  else if(v.match(/^\s*false\s*$/)) {
+  else if (v.match(/^\s*false\s*$/)) {
     return false;
   }
   else {
@@ -48,9 +48,9 @@ class SingleFilterEditor extends React.Component {
 
   onFilterPartChanged(filterOp, propertyName, filterArgs) {
     let newFilter = [filterOp, propertyName, ...filterArgs.map(parseFilter)]
-    if(filterOp === 'has' || filterOp === '!has') {
+    if (filterOp === 'has' || filterOp === '!has') {
       newFilter = [filterOp, propertyName]
-    } else if(filterArgs.length === 0) {
+    } else if (filterArgs.length === 0) {
       newFilter = [filterOp, propertyName, '']
     }
     this.props.onChange(newFilter)
@@ -78,12 +78,12 @@ class SingleFilterEditor extends React.Component {
         />
       </div>
       {filterArgs.length > 0 &&
-      <div className="maputnik-filter-editor-args">
-        <StringInput
-          value={filterArgs.join(',')}
-          onChange={ v=> this.onFilterPartChanged(filterOp, propertyName, v.split(','))}
-        />
-      </div>
+        <div className="maputnik-filter-editor-args">
+          <StringInput
+            value={filterArgs.join(',')}
+            onChange={v => this.onFilterPartChanged(filterOp, propertyName, v.split(','))}
+          />
+        </div>
       }
     </div>
   }

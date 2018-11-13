@@ -12,16 +12,16 @@ class MultiButtonInput extends React.Component {
 
   render() {
     let options = this.props.options
-    if(options.length > 0 && !Array.isArray(options[0])) {
+    if (options.length > 0 && !Array.isArray(options[0])) {
       options = options.map(v => [v, v])
     }
 
     const selectedValue = this.props.value || options[0][0]
-    const buttons = options.map(([val, label])=> {
+    const buttons = options.map(([val, label]) => {
       return <Button
         key={val}
         onClick={e => this.props.onChange(val)}
-        className={classnames({"maputnik-button-selected": val === selectedValue})}
+        className={classnames({ "maputnik-button-selected": val === selectedValue })}
       >
         {label}
       </Button>

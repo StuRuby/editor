@@ -17,7 +17,7 @@ const iconProperties = ['background-pattern', 'fill-pattern', 'line-pattern', 'f
 
 function labelFromFieldName(fieldName) {
   let label = fieldName.split('-').slice(1).join(' ')
-  if(label.length > 0) {
+  if (label.length > 0) {
     label = label.charAt(0).toUpperCase() + label.slice(1);
   }
   return label
@@ -59,7 +59,7 @@ export default class SpecField extends React.Component {
     }
 
     function childNodes() {
-      switch(this.props.fieldSpec.type) {
+      switch (this.props.fieldSpec.type) {
         case 'number': return (
           <NumberInput
             {...commonProps}
@@ -70,7 +70,7 @@ export default class SpecField extends React.Component {
         case 'enum':
           const options = Object.keys(this.props.fieldSpec.values).map(v => [v, capitalize(v)])
 
-          if(options.length <= 3 && optionsLabelLength(options) <= 20) {
+          if (options.length <= 3 && optionsLabelLength(options) <= 20) {
             return <MultiButtonInput
               {...commonProps}
               options={options}
@@ -82,7 +82,7 @@ export default class SpecField extends React.Component {
             />
           }
         case 'string':
-          if(iconProperties.indexOf(this.props.fieldName) >= 0) {
+          if (iconProperties.indexOf(this.props.fieldName) >= 0) {
             return <IconInput
               {...commonProps}
               icons={this.props.fieldSpec.values}
@@ -103,7 +103,7 @@ export default class SpecField extends React.Component {
           />
         )
         case 'array':
-          if(this.props.fieldName === 'text-font') {
+          if (this.props.fieldName === 'text-font') {
             return <FontInput
               {...commonProps}
               fonts={this.props.fieldSpec.values}
@@ -127,8 +127,8 @@ export default class SpecField extends React.Component {
     }
 
     return (
-      <div data-wd-key={"spec-field:"+this.props.fieldName}>
-      {childNodes.call(this)}
+      <div data-wd-key={"spec-field:" + this.props.fieldName}>
+        {childNodes.call(this)}
       </div>
     );
   }

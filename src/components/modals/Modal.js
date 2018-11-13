@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import {MdClose} from 'react-icons/md'
+import { MdClose } from 'react-icons/md'
 import AriaModal from 'react-aria-modal'
 
 
@@ -35,7 +35,7 @@ class Modal extends React.Component {
   }
 
   render() {
-    if(this.props.isOpen) {
+    if (this.props.isOpen) {
       return <AriaModal
         titleText={this.props.title}
         underlayClickExits={this.props.underlayClickExits}
@@ -53,7 +53,7 @@ class Modal extends React.Component {
             <span className="maputnik-modal-header-space"></span>
             <button className="maputnik-modal-header-toggle"
               onClick={this.onClose}
-              data-wd-key={this.props["data-wd-key"]+".close-modal"}
+              data-wd-key={this.props["data-wd-key"] + ".close-modal"}
             >
               <MdClose />
             </button>

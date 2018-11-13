@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 import DocLabel from './DocLabel'
 import Button from '../Button'
-import {MdDelete} from 'react-icons/md'
+import { MdDelete } from 'react-icons/md'
 
 
 export default class DeleteStopButton extends React.Component {

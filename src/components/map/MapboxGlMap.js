@@ -33,14 +33,14 @@ function buildInspectStyle(originalMapStyle, coloredLayers, highlightedLayer) {
   }
 
   const layer = colorHighlightedLayer(highlightedLayer)
-  if(layer) {
+  if (layer) {
     coloredLayers.push(layer)
   }
 
   const sources = {}
   Object.keys(originalMapStyle.sources).forEach(sourceId => {
     const source = originalMapStyle.sources[sourceId]
-    if(source.type !== 'raster' && source.type !== 'raster-dem') {
+    if (source.type !== 'raster' && source.type !== 'raster-dem') {
       sources[sourceId] = source
     }
   })
@@ -64,9 +64,9 @@ export default class MapboxGlMap extends React.Component {
   }
 
   static defaultProps = {
-    onMapLoaded: () => {},
-    onDataChange: () => {},
-    onLayerSelect: () => {},
+    onMapLoaded: () => { },
+    onDataChange: () => { },
+    onLayerSelect: () => { },
     mapboxAccessToken: tokens.mapbox,
     options: {},
   }
@@ -84,30 +84,30 @@ export default class MapboxGlMap extends React.Component {
   }
 
   updateMapFromProps(props) {
-    if(!IS_SUPPORTED) return;
+    if (!IS_SUPPORTED) return;
 
-    if(!this.state.map) return
+    if (!this.state.map) return
     const metadata = props.mapStyle.metadata || {}
     MapboxGl.accessToken = metadata['maputnik:mapbox_access_token'] || tokens.mapbox
 
-    if(!props.inspectModeEnabled) {
+    if (!props.inspectModeEnabled) {
       //Mapbox GL now does diffing natively so we don't need to calculate
       //the necessary operations ourselves!
-      this.state.map.setStyle(props.mapStyle, { diff: true})
+      this.state.map.setStyle(props.mapStyle, { diff: true })
     }
   }
 
   componentDidUpdate(prevProps) {
-    if(!IS_SUPPORTED) return;
+    if (!IS_SUPPORTED) return;
 
     const map = this.state.map;
 
     this.updateMapFromProps(this.props);
 
-    if(this.props.inspectModeEnabled !== prevProps.inspectModeEnabled) {
+    if (this.props.inspectModeEnabled !== prevProps.inspectModeEnabled) {
       this.state.inspect.toggleInspector()
     }
-    if(this.props.inspectModeEnabled) {
+    if (this.props.inspectModeEnabled) {
       this.state.inspect.render()
     }
 
@@ -119,7 +119,7 @@ export default class MapboxGlMap extends React.Component {
   }
 
   componentDidMount() {
-    if(!IS_SUPPORTED) return;
+    if (!IS_SUPPORTED) return;
 
     const mapOpts = {
       ...this.props.options,
@@ -154,7 +154,7 @@ export default class MapboxGlMap extends React.Component {
       },
       buildInspectStyle: (originalMapStyle, coloredLayers) => buildInspectStyle(originalMapStyle, coloredLayers, this.props.highlightedLayer),
       renderPopup: features => {
-        if(this.props.inspectModeEnabled) {
+        if (this.props.inspectModeEnabled) {
           return renderPropertyPopup(features)
         } else {
           var mountNode = document.createElement('div');
@@ -170,7 +170,7 @@ export default class MapboxGlMap extends React.Component {
     })
 
     map.on("data", e => {
-      if(e.dataType !== 'tile') return
+      if (e.dataType !== 'tile') return
       this.props.onDataChange({
         map: this.state.map
       })
@@ -178,7 +178,7 @@ export default class MapboxGlMap extends React.Component {
   }
 
   render() {
-    if(IS_SUPPORTED) {
+    if (IS_SUPPORTED) {
       return <div
         className="maputnik-map__map"
         ref={x => this.container = x}

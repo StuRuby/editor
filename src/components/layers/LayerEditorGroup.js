@@ -16,11 +16,11 @@ export default class LayerEditorGroup extends React.Component {
   render() {
     return <div>
       <div className="maputnik-layer-editor-group"
-        data-wd-key={"layer-editor-group:"+this.props["data-wd-key"]}
+        data-wd-key={"layer-editor-group:" + this.props["data-wd-key"]}
         onClick={e => this.props.onActiveToggle(!this.props.isActive)}
       >
         <span>{this.props.title}</span>
-        <span style={{flexGrow: 1}} />
+        <span style={{ flexGrow: 1 }} />
         <Collapser isCollapsed={this.props.isActive} />
       </div>
       <Collapse isActive={this.props.isActive}>

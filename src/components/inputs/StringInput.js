@@ -19,8 +19,8 @@ class StringInput extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    if(this.props.value !== prevProps.value) {
-      this.setState({value: this.props.value})
+    if (this.props.value !== prevProps.value) {
+      this.setState({ value: this.props.value })
     }
   }
 
@@ -28,7 +28,7 @@ class StringInput extends React.Component {
     let tag;
     let classes;
 
-    if(!!this.props.multi) {
+    if (!!this.props.multi) {
       tag = "textarea"
       classes = [
         "maputnik-string",
@@ -55,7 +55,7 @@ class StringInput extends React.Component {
         })
       },
       onBlur: () => {
-        if(this.state.value!==this.props.value) this.props.onChange(this.state.value)
+        if (this.state.value !== this.props.value) this.props.onChange(this.state.value)
       }
     });
   }

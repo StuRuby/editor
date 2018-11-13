@@ -20,7 +20,7 @@ export default class SpecProperty extends React.Component {
     const functionBtn = <FunctionButtons
       fieldSpec={this.props.fieldSpec}
       onZoomClick={this.props.onZoomClick}
-      onDataClick={this.props.onDataClick} 
+      onDataClick={this.props.onDataClick}
     />
 
     return <InputBlock

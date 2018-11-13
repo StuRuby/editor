@@ -19,16 +19,16 @@ class AutocompleteInput extends React.Component {
   }
 
   static defaultProps = {
-    onChange: () => {},
+    onChange: () => { },
     options: [],
   }
 
   calcMaxHeight() {
-    if(this.props.keepMenuWithinWindowBounds) {
+    if (this.props.keepMenuWithinWindowBounds) {
       const maxHeight = window.innerHeight - this.autocompleteMenuEl.getBoundingClientRect().top;
       const limitedMaxHeight = Math.min(maxHeight, MAX_HEIGHT);
 
-      if(limitedMaxHeight != this.state.maxHeight) {
+      if (limitedMaxHeight != this.state.maxHeight) {
         this.setState({
           maxHeight: limitedMaxHeight
         })
@@ -70,8 +70,8 @@ class AutocompleteInput extends React.Component {
         getItemValue={(item) => item[0]}
         onSelect={v => this.props.onChange(v)}
         onChange={(e, v) => this.props.onChange(v)}
-        shouldItemRender={(item, value="") => {
-          if (typeof(value) === "string") {
+        shouldItemRender={(item, value = "") => {
+          if (typeof (value) === "string") {
             return item[0].toLowerCase().indexOf(value.toLowerCase()) > -1
           }
         }}
@@ -83,7 +83,7 @@ class AutocompleteInput extends React.Component {
               "maputnik-autocomplete-menu-item-selected": isHighlighted,
             })}
           >
-           {item[1]}
+            {item[1]}
           </div>
         )}
       />

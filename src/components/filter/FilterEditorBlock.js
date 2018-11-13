@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Button from '../Button'
-import {MdDelete} from 'react-icons/md'
+import { MdDelete } from 'react-icons/md'
 
 class FilterEditorBlock extends React.Component {
   static propTypes = {

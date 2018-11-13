@@ -17,13 +17,13 @@ function isDataField(value) {
 /** Supports displaying spec field for zoom function objects
  * https://www.mapbox.com/mapbox-gl-style-spec/#types-function-zoom-property
  */
-export default class FunctionSpecProperty  extends React.Component {
+export default class FunctionSpecProperty extends React.Component {
   static propTypes = {
-      onChange: PropTypes.func.isRequired,
-      fieldName: PropTypes.string.isRequired,
-      fieldSpec: PropTypes.object.isRequired,
+    onChange: PropTypes.func.isRequired,
+    fieldName: PropTypes.string.isRequired,
+    fieldSpec: PropTypes.object.isRequired,
 
-      value: PropTypes.oneOfType([
+    value: PropTypes.oneOfType([
       PropTypes.object,
       PropTypes.string,
       PropTypes.number,
@@ -47,7 +47,7 @@ export default class FunctionSpecProperty  extends React.Component {
     const lastStop = stops[stops.length - 1]
     if (typeof lastStop[0] === "object") {
       stops.push([
-        {zoom: lastStop[0].zoom + 1, value: lastStop[0].value},
+        { zoom: lastStop[0].zoom + 1, value: lastStop[0].value },
         lastStop[1]
       ])
     }
@@ -72,7 +72,7 @@ export default class FunctionSpecProperty  extends React.Component {
       stops: stops,
     }
 
-    if(stops.length === 1) {
+    if (stops.length === 1) {
       changedValue = stops[0][1]
     }
 
@@ -96,8 +96,8 @@ export default class FunctionSpecProperty  extends React.Component {
       property: "",
       type: functionType,
       stops: [
-        [{zoom: 6, value: stopValue}, this.props.value || stopValue],
-        [{zoom: 10, value: stopValue}, this.props.value || stopValue]
+        [{ zoom: 6, value: stopValue }, this.props.value || stopValue],
+        [{ zoom: 10, value: stopValue }, this.props.value || stopValue]
       ]
     }
     this.props.onChange(this.props.fieldName, dataFunc)
@@ -139,11 +139,11 @@ export default class FunctionSpecProperty  extends React.Component {
           fieldSpec={this.props.fieldSpec}
           value={this.props.value}
           onZoomClick={this.makeZoomFunction}
-          onDataClick={this.makeDataFunction} 
+          onDataClick={this.makeDataFunction}
         />
       )
     }
-    return <div className={propClass} data-wd-key={"spec-field:"+this.props.fieldName}>
+    return <div className={propClass} data-wd-key={"spec-field:" + this.props.fieldName}>
       {specField}
     </div>
   }

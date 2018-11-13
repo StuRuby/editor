@@ -5,8 +5,8 @@ import Modal from './Modal'
 import Button from '../Button'
 import FileReaderInput from 'react-file-reader-input'
 
-import {MdFileUpload} from 'react-icons/md'
-import {MdAddCircleOutline} from 'react-icons/md'
+import { MdFileUpload } from 'react-icons/md'
+import { MdAddCircleOutline } from 'react-icons/md'
 
 import style from '../../libs/style.js'
 import publicStyles from '../../config/styles.json'
@@ -64,9 +64,9 @@ class OpenModal extends React.Component {
 
   onCancelActiveRequest(e) {
     // Else the click propagates to the underlying modal
-    if(e) e.stopPropagation();
+    if (e) e.stopPropagation();
 
-    if(this.state.activeRequest) {
+    if (this.state.activeRequest) {
       this.state.activeRequest.abort();
       this.setState({
         activeRequest: null,
@@ -84,37 +84,37 @@ class OpenModal extends React.Component {
       mode: 'cors',
       credentials: "same-origin"
     })
-    .then(function(response) {
-      return response.json();
-    })
-    .then((body) => {
-      if(canceled) {
-        return;
-      }
+      .then(function (response) {
+        return response.json();
+      })
+      .then((body) => {
+        if (canceled) {
+          return;
+        }
 
-      this.setState({
-        activeRequest: null,
-        activeRequestUrl: null
-      });
+        this.setState({
+          activeRequest: null,
+          activeRequestUrl: null
+        });
 
-      const mapStyle = style.ensureStyleValidity(body)
-      console.log('Loaded style ', mapStyle.id)
-      this.props.onStyleOpen(mapStyle)
-      this.onOpenToggle()
-    })
-    .catch((err) => {
-      this.setState({
-        error: `Failed to load: '${styleUrl}'`,
-        activeRequest: null,
-        activeRequestUrl: null
-      });
-      console.error(err);
-      console.warn('Could not open the style URL', styleUrl)
-    })
+        const mapStyle = style.ensureStyleValidity(body)
+        console.log('Loaded style ', mapStyle.id)
+        this.props.onStyleOpen(mapStyle)
+        this.onOpenToggle()
+      })
+      .catch((err) => {
+        this.setState({
+          error: `Failed to load: '${styleUrl}'`,
+          activeRequest: null,
+          activeRequestUrl: null
+        });
+        console.error(err);
+        console.warn('Could not open the style URL', styleUrl)
+      })
 
     this.setState({
       activeRequest: {
-        abort: function() {
+        abort: function () {
           canceled = true;
         }
       },
@@ -139,7 +139,7 @@ class OpenModal extends React.Component {
       try {
         mapStyle = JSON.parse(e.target.result)
       }
-      catch(err) {
+      catch (err) {
         this.setState({
           error: err.toString()
         });
@@ -178,7 +178,7 @@ class OpenModal extends React.Component {
     })
 
     let errorElement;
-    if(this.state.error) {
+    if (this.state.error) {
       errorElement = (
         <div className="maputnik-modal-error">
           {this.state.error}
@@ -187,7 +187,7 @@ class OpenModal extends React.Component {
       );
     }
 
-    return  (
+    return (
       <div>
         <Modal
           data-wd-key="open-modal"
@@ -234,7 +234,7 @@ class OpenModal extends React.Component {
               Open one of the publicly available styles to start from.
             </p>
             <div className="maputnik-style-gallery-container">
-            {styleOptions}
+              {styleOptions}
             </div>
           </section>
         </Modal>
@@ -243,7 +243,7 @@ class OpenModal extends React.Component {
           isOpen={!!this.state.activeRequest}
           title={'Loading style'}
           onCancel={(e) => this.onCancelActiveRequest(e)}
-          message={"Loading: "+this.state.activeRequestUrl}
+          message={"Loading: " + this.state.activeRequestUrl}
         />
       </div>
     )

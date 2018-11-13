@@ -14,7 +14,7 @@ import CommentBlock from './CommentBlock'
 import LayerSourceBlock from './LayerSourceBlock'
 import LayerSourceLayerBlock from './LayerSourceLayerBlock'
 
-import {MdMoreVert} from 'react-icons/md'
+import { MdMoreVert } from 'react-icons/md'
 
 import { changeType, changeProperty } from '../../libs/layer'
 import layout from '../../config/layout.json'
@@ -55,9 +55,9 @@ export default class LayerEditor extends React.Component {
   }
 
   static defaultProps = {
-    onLayerChanged: () => {},
-    onLayerIdChange: () => {},
-    onLayerDestroyed: () => {},
+    onLayerChanged: () => { },
+    onLayerIdChange: () => { },
+    onLayerDestroyed: () => { },
   }
 
   static childContextTypes = {
@@ -80,7 +80,7 @@ export default class LayerEditor extends React.Component {
     const additionalGroups = { ...state.editorGroups }
 
     layout[props.layer.type].groups.forEach(group => {
-      if(!(group.title in additionalGroups)) {
+      if (!(group.title in additionalGroups)) {
         additionalGroups[group.title] = true
       }
     })
@@ -90,7 +90,7 @@ export default class LayerEditor extends React.Component {
     };
   }
 
-  getChildContext () {
+  getChildContext() {
     return {
       reactIconBase: {
         size: 14,
@@ -115,16 +115,16 @@ export default class LayerEditor extends React.Component {
 
   renderGroupType(type, fields) {
     let comment = ""
-    if(this.props.layer.metadata) {
+    if (this.props.layer.metadata) {
       comment = this.props.layer.metadata['maputnik:comment']
     }
 
     let sourceLayerIds;
-    if(this.props.sources.hasOwnProperty(this.props.layer.source)) {
+    if (this.props.sources.hasOwnProperty(this.props.layer.source)) {
       sourceLayerIds = this.props.sources[this.props.layer.source].layers;
     }
 
-    switch(type) {
+    switch (type) {
       case 'layer': return <div>
         <LayerIdBlock
           value={this.props.layer.id}
@@ -142,11 +142,11 @@ export default class LayerEditor extends React.Component {
         />
         }
         {['background', 'raster', 'hillshade', 'heatmap'].indexOf(this.state.type) < 0 &&
-        <LayerSourceLayerBlock
-          sourceLayerIds={sourceLayerIds}
-          value={this.props.layer['source-layer']}
-          onChange={v => this.changeProperty(null, 'source-layer', v)}
-        />
+          <LayerSourceLayerBlock
+            sourceLayerIds={sourceLayerIds}
+            value={this.props.layer['source-layer']}
+            onChange={v => this.changeProperty(null, 'source-layer', v)}
+          />
         }
         <MinZoomBlock
           value={this.props.layer.minzoom}
@@ -158,7 +158,7 @@ export default class LayerEditor extends React.Component {
         />
         <CommentBlock
           value={comment}
-          onChange={v => this.changeProperty('metadata', 'maputnik:comment', v == ""  ? undefined : v)}
+          onChange={v => this.changeProperty('metadata', 'maputnik:comment', v == "" ? undefined : v)}
         />
       </div>
       case 'filter': return <div>
@@ -186,7 +186,7 @@ export default class LayerEditor extends React.Component {
   moveLayer(offset) {
     this.props.onMoveLayer({
       oldIndex: this.props.layerIndex,
-      newIndex: this.props.layerIndex+offset
+      newIndex: this.props.layerIndex + offset
     })
   }
 
@@ -241,7 +241,7 @@ export default class LayerEditor extends React.Component {
     }
 
     return <div className="maputnik-layer-editor"
-      >
+    >
       <header>
         <div className="layer-header">
           <h2 className="layer-header__title">

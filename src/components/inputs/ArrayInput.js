@@ -25,7 +25,7 @@ class ArrayInput extends React.Component {
 
   render() {
     const inputs = this.values.map((v, i) => {
-      if(this.props.type === 'number') {
+      if (this.props.type === 'number') {
         return <NumberInput
           key={i}
           value={v}

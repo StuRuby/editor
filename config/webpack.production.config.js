@@ -11,7 +11,7 @@ var OUTPATH = artifacts.pathSync("/build");
 
 module.exports = {
   entry: {
-    app: './src/index.jsx',
+    app: './src/index.js',
   },
   output: {
     path: OUTPATH,

@@ -6,7 +6,7 @@ import LayerListGroup from './LayerListGroup'
 import LayerListItem from './LayerListItem'
 import AddModal from '../modals/AddModal'
 
-import {SortableContainer} from 'react-sortable-hoc';
+import { SortableContainer } from 'react-sortable-hoc';
 
 const layerListPropTypes = {
   layers: PropTypes.array.isRequired,
@@ -24,8 +24,8 @@ function findClosestCommonPrefix(layers, idx) {
   const currentLayerPrefix = layerPrefix(layers[idx].id)
   let closestIdx = idx
   for (let i = idx; i > 0; i--) {
-    const previousLayerPrefix = layerPrefix(layers[i-1].id)
-    if(previousLayerPrefix === currentLayerPrefix) {
+    const previousLayerPrefix = layerPrefix(layers[i - 1].id)
+    if (previousLayerPrefix === currentLayerPrefix) {
       closestIdx = i - 1
     } else {
       return closestIdx
@@ -36,9 +36,9 @@ function findClosestCommonPrefix(layers, idx) {
 
 // List of collapsible layer editors
 class LayerListContainer extends React.Component {
-  static propTypes = {...layerListPropTypes}
+  static propTypes = { ...layerListPropTypes }
   static defaultProps = {
-    onLayerSelect: () => {},
+    onLayerSelect: () => { },
   }
 
   state = {
@@ -59,9 +59,9 @@ class LayerListContainer extends React.Component {
   }
 
   toggleLayers = () => {
-    let idx=0
+    let idx = 0
 
-    let newGroups=[]
+    let newGroups = []
 
     this.groupedLayers().forEach(layers => {
       const groupPrefix = layerPrefix(layers[0].id)
@@ -86,9 +86,9 @@ class LayerListContainer extends React.Component {
   groupedLayers() {
     const groups = []
     for (let i = 0; i < this.props.layers.length; i++) {
-      const previousLayer = this.props.layers[i-1]
+      const previousLayer = this.props.layers[i - 1]
       const layer = this.props.layers[i]
-      if(previousLayer && layerPrefix(previousLayer.id) == layerPrefix(layer.id)) {
+      if (previousLayer && layerPrefix(previousLayer.id) == layerPrefix(layer.id)) {
         const lastGroup = groups[groups.length - 1]
         lastGroup.push(layer)
       } else {
@@ -101,7 +101,7 @@ class LayerListContainer extends React.Component {
   toggleLayerGroup(groupPrefix, idx) {
     const lookupKey = [groupPrefix, idx].join('-')
     const newGroups = { ...this.state.collapsedGroups }
-    if(lookupKey in this.state.collapsedGroups) {
+    if (lookupKey in this.state.collapsedGroups) {
       newGroups[lookupKey] = !this.state.collapsedGroups[lookupKey]
     } else {
       newGroups[lookupKey] = false
@@ -122,7 +122,7 @@ class LayerListContainer extends React.Component {
     let idx = 0
     this.groupedLayers().forEach(layers => {
       const groupPrefix = layerPrefix(layers[0].id)
-      if(layers.length > 1) {
+      if (layers.length > 1) {
         const grp = <LayerListGroup
           data-wd-key={[groupPrefix, idx].join('-')}
           key={[groupPrefix, idx].join('-')}
@@ -159,11 +159,11 @@ class LayerListContainer extends React.Component {
 
     return <div className="maputnik-layer-list">
       <AddModal
-          layers={this.props.layers}
-          sources={this.props.sources}
-          isOpen={this.state.isOpen.add}
-          onOpenToggle={this.toggleModal.bind(this, 'add')}
-          onLayersChange={this.props.onLayersChange}
+        layers={this.props.layers}
+        sources={this.props.sources}
+        isOpen={this.state.isOpen.add}
+        onOpenToggle={this.toggleModal.bind(this, 'add')}
+        onLayersChange={this.props.onLayersChange}
       />
       <header className="maputnik-layer-list-header">
         <span className="maputnik-layer-list-header-title">Layers</span>
@@ -184,7 +184,7 @@ class LayerListContainer extends React.Component {
               onClick={this.toggleModal.bind(this, 'add')}
               data-wd-key="layer-list:add-layer"
               className="maputnik-button maputnik-button-selected">
-             Add Layer
+              Add Layer
             </button>
           </div>
         </div>
@@ -199,7 +199,7 @@ class LayerListContainer extends React.Component {
 const LayerListContainerSortable = SortableContainer((props) => <LayerListContainer {...props} />)
 
 export default class LayerList extends React.Component {
-  static propTypes = {...layerListPropTypes}
+  static propTypes = { ...layerListPropTypes }
 
   render() {
     return <LayerListContainerSortable

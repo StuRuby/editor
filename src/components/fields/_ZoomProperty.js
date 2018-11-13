@@ -22,11 +22,11 @@ function setStopRefs(props, state) {
   // This is initialsed below only if required to improved performance.
   let newRefs;
 
-  if(props.value && props.value.stops) {
+  if (props.value && props.value.stops) {
     props.value.stops.forEach((val, idx) => {
-      if(!state.refs.hasOwnProperty(idx)) {
-        if(!newRefs) {
-          newRefs = {...state};
+      if (!state.refs.hasOwnProperty(idx)) {
+        if (!newRefs) {
+          newRefs = { ...state };
         }
         newRefs[idx] = docUid("stop-");
       }
@@ -60,7 +60,7 @@ export default class ZoomProperty extends React.Component {
   componentDidMount() {
     const newRefs = setStopRefs(this.props, this.state);
 
-    if(newRefs) {
+    if (newRefs) {
       this.setState({
         refs: newRefs
       })
@@ -69,7 +69,7 @@ export default class ZoomProperty extends React.Component {
 
   static getDerivedStateFromProps(props, state) {
     const newRefs = setStopRefs(props, state);
-    if(newRefs) {
+    if (newRefs) {
       return {
         refs: newRefs
       };
@@ -86,13 +86,13 @@ export default class ZoomProperty extends React.Component {
           data: stop
         }
       })
-    // Sort by zoom
+      // Sort by zoom
       .sort((a, b) => sortNumerically(a.data[0], b.data[0]));
 
     // Fetch the new position of the stops
     const newRefs = {};
     mappedWithRef
-      .forEach((stop, idx) =>{
+      .forEach((stop, idx) => {
         newRefs[idx] = stop.ref;
       })
 
@@ -119,9 +119,9 @@ export default class ZoomProperty extends React.Component {
   render() {
     const zoomFields = this.props.value.stops.map((stop, idx) => {
       const zoomLevel = stop[0]
-      const key  = this.state.refs[idx];
+      const key = this.state.refs[idx];
       const value = stop[1]
-      const deleteStopBtn= <DeleteStopButton onClick={this.props.onDeleteStop.bind(this, idx)} />
+      const deleteStopBtn = <DeleteStopButton onClick={this.props.onDeleteStop.bind(this, idx)} />
 
       return <InputBlock
         key={key}

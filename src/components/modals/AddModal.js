@@ -27,9 +27,9 @@ class AddModal extends React.Component {
       type: this.state.type,
     }
 
-    if(this.state.type !== 'background') {
+    if (this.state.type !== 'background') {
       layer.source = this.state.source
-      if(this.state.type !== 'raster' && this.state['source-layer']) {
+      if (this.state.type !== 'raster' && this.state['source-layer']) {
         layer['source-layer'] = this.state['source-layer']
       }
     }
@@ -47,7 +47,7 @@ class AddModal extends React.Component {
       id: '',
     }
 
-    if(props.sources.length > 0) {
+    if (props.sources.length > 0) {
       this.state.source = Object.keys(this.props.sources)[0]
       this.state['source-layer'] = this.props.sources[this.state.source][0]
     }
@@ -61,7 +61,7 @@ class AddModal extends React.Component {
     const availableSourcesOld = this.getSources(oldType);
     const availableSourcesNew = this.getSources(newType);
 
-    if(
+    if (
       // Type has changed
       oldType !== newType
       && this.state.source !== ""
@@ -98,8 +98,8 @@ class AddModal extends React.Component {
       ]
     }
 
-    for(let [key, val] of Object.entries(this.props.sources)) {
-      if(types[val.type] && types[val.type].indexOf(type) > -1) {
+    for (let [key, val] of Object.entries(this.props.sources)) {
+      if (types[val.type] && types[val.type].indexOf(type) > -1) {
         sources.push(key);
       }
     }
@@ -119,40 +119,40 @@ class AddModal extends React.Component {
       data-wd-key="modal:add-layer"
     >
       <div className="maputnik-add-layer">
-      <LayerIdBlock
-        value={this.state.id}
-        wdKey="add-layer.layer-id"
-        onChange={v => {
-          this.setState({ id: v })
-        }}
-      />
-      <LayerTypeBlock
-        value={this.state.type}
-        wdKey="add-layer.layer-type"
-        onChange={v => this.setState({ type: v })}
-      />
-      {this.state.type !== 'background' &&
-      <LayerSourceBlock
-        sourceIds={sources}
-        wdKey="add-layer.layer-source-block"
-        value={this.state.source}
-        onChange={v => this.setState({ source: v })}
-      />
-      }
-      {['background', 'raster', 'hillshade', 'heatmap'].indexOf(this.state.type) < 0 &&
-      <LayerSourceLayerBlock
-        isFixed={true}
-        sourceLayerIds={layers}
-        value={this.state['source-layer']}
-        onChange={v => this.setState({ 'source-layer': v })}
-      />
-      }
-      <Button
-        className="maputnik-add-layer-button"
-        onClick={this.addLayer}
-        data-wd-key="add-layer"
-      >
-        Add Layer
+        <LayerIdBlock
+          value={this.state.id}
+          wdKey="add-layer.layer-id"
+          onChange={v => {
+            this.setState({ id: v })
+          }}
+        />
+        <LayerTypeBlock
+          value={this.state.type}
+          wdKey="add-layer.layer-type"
+          onChange={v => this.setState({ type: v })}
+        />
+        {this.state.type !== 'background' &&
+          <LayerSourceBlock
+            sourceIds={sources}
+            wdKey="add-layer.layer-source-block"
+            value={this.state.source}
+            onChange={v => this.setState({ source: v })}
+          />
+        }
+        {['background', 'raster', 'hillshade', 'heatmap'].indexOf(this.state.type) < 0 &&
+          <LayerSourceLayerBlock
+            isFixed={true}
+            sourceLayerIds={layers}
+            value={this.state['source-layer']}
+            onChange={v => this.setState({ 'source-layer': v })}
+          />
+        }
+        <Button
+          className="maputnik-add-layer-button"
+          onClick={this.addLayer}
+          data-wd-key="add-layer"
+        >
+          Add Layer
       </Button>
       </div>
     </Modal>

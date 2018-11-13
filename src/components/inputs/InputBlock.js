@@ -20,7 +20,7 @@ class InputBlock extends React.Component {
 
   onChange(e) {
     const value = e.target.value
-    return this.props.onChange(value === "" ? null: value)
+    return this.props.onChange(value === "" ? null : value)
   }
 
   render() {
@@ -30,24 +30,24 @@ class InputBlock extends React.Component {
         "maputnik-input-block": true,
         "maputnik-action-block": this.props.action
       })}
-      >
+    >
       {this.props.doc &&
-      <div className="maputnik-input-block-label">
-        <DocLabel
-          label={this.props.label}
-          doc={this.props.doc}
-        />
-      </div>
+        <div className="maputnik-input-block-label">
+          <DocLabel
+            label={this.props.label}
+            doc={this.props.doc}
+          />
+        </div>
       }
       {!this.props.doc &&
-      <label className="maputnik-input-block-label">
-        {this.props.label}
-      </label>
+        <label className="maputnik-input-block-label">
+          {this.props.label}
+        </label>
       }
       {this.props.action &&
-      <div className="maputnik-input-block-action">
-        {this.props.action}
-      </div>
+        <div className="maputnik-input-block-action">
+          {this.props.action}
+        </div>
       }
       <div className="maputnik-input-block-content">
         {this.props.children}

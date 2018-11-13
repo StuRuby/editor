@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import {latest} from '@mapbox/mapbox-gl-style-spec'
+import { latest } from '@mapbox/mapbox-gl-style-spec'
 import InputBlock from '../inputs/InputBlock'
 import NumberInput from '../inputs/NumberInput'
 

@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { combiningFilterOps } from '../../libs/filterops.js'
 
-import {latest} from '@mapbox/mapbox-gl-style-spec'
+import { latest } from '@mapbox/mapbox-gl-style-spec'
 import DocLabel from '../fields/DocLabel'
 import SelectInput from '../inputs/SelectInput'
 import SingleFilterEditor from './SingleFilterEditor'
@@ -14,7 +14,7 @@ function hasCombiningFilter(filter) {
 }
 
 function hasNestedCombiningFilter(filter) {
-  if(hasCombiningFilter(filter)) {
+  if (hasCombiningFilter(filter)) {
     const combinedFilters = filter.slice(1)
     return filter.slice(1).map(f => hasCombiningFilter(f)).filter(f => f == true).length > 0
   }
@@ -36,7 +36,7 @@ export default class CombiningFilterEditor extends React.Component {
     let combiningOp = filter[0]
     let filters = filter.slice(1)
 
-    if(combiningFilterOps.indexOf(combiningOp) < 0) {
+    if (combiningFilterOps.indexOf(combiningOp) < 0) {
       combiningOp = 'all'
       filters = [filter.slice(0)]
     }
@@ -79,7 +79,7 @@ export default class CombiningFilterEditor extends React.Component {
     })
 
     //TODO: Implement support for nested filter
-    if(hasNestedCombiningFilter(filter)) {
+    if (hasNestedCombiningFilter(filter)) {
       return <div className="maputnik-filter-editor-unsupported">
         Nested filters are not supported.
       </div>

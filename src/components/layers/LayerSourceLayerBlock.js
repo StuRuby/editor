@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import {latest} from '@mapbox/mapbox-gl-style-spec'
+import { latest } from '@mapbox/mapbox-gl-style-spec'
 import InputBlock from '../inputs/InputBlock'
 import AutocompleteInput from '../inputs/AutocompleteInput'
 
@@ -14,7 +14,7 @@ class LayerSourceLayer extends React.Component {
   }
 
   static defaultProps = {
-    onChange: () => {},
+    onChange: () => { },
     sourceLayerIds: [],
     isFixed: false
   }

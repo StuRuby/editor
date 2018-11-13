@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 import DocLabel from './DocLabel'
 import Button from '../Button'
-import {MdFunctions, MdInsertChart} from 'react-icons/md'
+import { MdFunctions, MdInsertChart } from 'react-icons/md'
 
 
 export default class FunctionButtons extends React.Component {

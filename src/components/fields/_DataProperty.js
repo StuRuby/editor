@@ -88,7 +88,7 @@ export default class DataProperty extends React.Component {
       }
 
       let dataInput;
-      if(this.props.value.type === "categorical") {
+      if (this.props.value.type === "categorical") {
         dataInput = <StringInput {...dataProps} />
       }
       else {
@@ -96,11 +96,11 @@ export default class DataProperty extends React.Component {
       }
 
       let zoomInput = null;
-      if(zoomLevel !== undefined) {
+      if (zoomLevel !== undefined) {
         zoomInput = <div className="maputnik-data-spec-property-stop-edit">
           <NumberInput
             value={zoomLevel}
-            onChange={newZoom => this.changeStop(idx, {zoom: newZoom, value: dataLevel}, value)}
+            onChange={newZoom => this.changeStop(idx, { zoom: newZoom, value: dataLevel }, value)}
             min={0}
             max={22}
           />
@@ -117,59 +117,59 @@ export default class DataProperty extends React.Component {
             fieldName={this.props.fieldName}
             fieldSpec={this.props.fieldSpec}
             value={value}
-            onChange={(_, newValue) => this.changeStop(idx, {zoom: zoomLevel, value: dataLevel}, newValue)}
+            onChange={(_, newValue) => this.changeStop(idx, { zoom: zoomLevel, value: dataLevel }, newValue)}
           />
         </div>
       </InputBlock>
     })
 
     return <div className="maputnik-data-spec-block">
-    <div className="maputnik-data-spec-property">
-      <InputBlock
-        doc={this.props.fieldSpec.doc}
-        label={labelFromFieldName(this.props.fieldName)}
-      >
-        <div className="maputnik-data-spec-property-group">
-          <DocLabel
-            label="Property"
-            doc={"Input a data property to base styles off of."}
-          />
-          <div className="maputnik-data-spec-property-input">
-            <StringInput
-              value={this.props.value.property}
-              onChange={propVal => this.changeDataProperty("property", propVal)}
+      <div className="maputnik-data-spec-property">
+        <InputBlock
+          doc={this.props.fieldSpec.doc}
+          label={labelFromFieldName(this.props.fieldName)}
+        >
+          <div className="maputnik-data-spec-property-group">
+            <DocLabel
+              label="Property"
+              doc={"Input a data property to base styles off of."}
             />
+            <div className="maputnik-data-spec-property-input">
+              <StringInput
+                value={this.props.value.property}
+                onChange={propVal => this.changeDataProperty("property", propVal)}
+              />
+            </div>
           </div>
-        </div>
-        <div className="maputnik-data-spec-property-group">
-          <DocLabel
-            label="Type"
-            doc={"Select a type of data scale (default is 'categorical')."}
-          />
-          <div className="maputnik-data-spec-property-input">
-            <SelectInput
-              value={this.props.value.type}
-              onChange={propVal => this.changeDataProperty("type", propVal)}
-              options={this.getDataFunctionTypes(this.props.fieldSpec)}
+          <div className="maputnik-data-spec-property-group">
+            <DocLabel
+              label="Type"
+              doc={"Select a type of data scale (default is 'categorical')."}
             />
+            <div className="maputnik-data-spec-property-input">
+              <SelectInput
+                value={this.props.value.type}
+                onChange={propVal => this.changeDataProperty("type", propVal)}
+                options={this.getDataFunctionTypes(this.props.fieldSpec)}
+              />
+            </div>
           </div>
-        </div>
-        <div className="maputnik-data-spec-property-group">
-          <DocLabel
-            label="Default"
-            doc={"Input a default value for data if not covered by the scales."}
-          />
-          <div className="maputnik-data-spec-property-input">
-            <SpecField
-              fieldName={this.props.fieldName}
-              fieldSpec={this.props.fieldSpec}
-              value={this.props.value.default}
-              onChange={(_, propVal) => this.changeDataProperty("default", propVal)}
+          <div className="maputnik-data-spec-property-group">
+            <DocLabel
+              label="Default"
+              doc={"Input a default value for data if not covered by the scales."}
             />
+            <div className="maputnik-data-spec-property-input">
+              <SpecField
+                fieldName={this.props.fieldName}
+                fieldSpec={this.props.fieldSpec}
+                value={this.props.value.default}
+                onChange={(_, propVal) => this.changeDataProperty("default", propVal)}
+              />
+            </div>
           </div>
-        </div>
-      </InputBlock>
-    </div>
+        </InputBlock>
+      </div>
       {dataFields}
       <Button
         className="maputnik-add-stop"

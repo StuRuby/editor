@@ -3,8 +3,8 @@ import PropTypes from 'prop-types'
 import { loadJSON } from '../../libs/urlopen'
 
 import 'ol/ol.css'
-import {apply} from 'ol-mapbox-style';
-import {Map, View} from 'ol';
+import { apply } from 'ol-mapbox-style';
+import { Map, View } from 'ol';
 
 
 export default class OpenLayersMap extends React.Component {
@@ -16,8 +16,8 @@ export default class OpenLayersMap extends React.Component {
   }
 
   static defaultProps = {
-    onMapLoaded: () => {},
-    onDataChange: () => {},
+    onMapLoaded: () => { },
+    onDataChange: () => { },
   }
 
   constructor(props) {
@@ -25,7 +25,7 @@ export default class OpenLayersMap extends React.Component {
   }
 
   updateStyle(newMapStyle) {
-    if(!this.map) return;
+    if (!this.map) return;
     apply(this.map, newMapStyle);
   }
 

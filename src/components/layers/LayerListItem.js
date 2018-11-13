@@ -2,10 +2,10 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
 
-import {MdContentCopy, MdVisibility, MdVisibilityOff, MdDelete} from 'react-icons/md'
+import { MdContentCopy, MdVisibility, MdVisibilityOff, MdDelete } from 'react-icons/md'
 
 import LayerIcon from '../icons/LayerIcon'
-import {SortableElement, SortableHandle} from 'react-sortable-hoc'
+import { SortableElement, SortableHandle } from 'react-sortable-hoc'
 
 
 const DraggableLabel = SortableHandle((props) => {
@@ -28,7 +28,7 @@ class IconAction extends React.Component {
   }
 
   renderIcon() {
-    switch(this.props.action) {
+    switch (this.props.action) {
       case 'duplicate': return <MdContentCopy />
       case 'show': return <MdVisibility />
       case 'hide': return <MdVisibilityOff />
@@ -37,7 +37,7 @@ class IconAction extends React.Component {
   }
 
   render() {
-    const {classBlockName, classBlockModifier} = this.props;
+    const { classBlockName, classBlockModifier } = this.props;
 
     let classAdditions = '';
     if (classBlockName) {
@@ -77,9 +77,9 @@ class LayerListItem extends React.Component {
   static defaultProps = {
     isSelected: false,
     visibility: 'visible',
-    onLayerCopy: () => {},
-    onLayerDestroy: () => {},
-    onLayerVisibilityToggle: () => {},
+    onLayerCopy: () => { },
+    onLayerDestroy: () => { },
+    onLayerVisibilityToggle: () => { },
   }
 
   static childContextTypes = {
@@ -98,33 +98,33 @@ class LayerListItem extends React.Component {
     return <li
       key={this.props.layerId}
       onClick={e => this.props.onLayerSelect(this.props.layerId)}
-      data-wd-key={"layer-list-item:"+this.props.layerId}
+      data-wd-key={"layer-list-item:" + this.props.layerId}
       className={classnames({
         "maputnik-layer-list-item": true,
         "maputnik-layer-list-item-selected": this.props.isSelected,
         [this.props.className]: true,
       })}>
-        <DraggableLabel {...this.props} />
-        <span style={{flexGrow: 1}} />
-        <IconAction
-          wdKey={"layer-list-item:"+this.props.layerId+":delete"}
-          action={'delete'}
-          classBlockName="delete"
-          onClick={e => this.props.onLayerDestroy(this.props.layerId)}
-        />
-        <IconAction
-          wdKey={"layer-list-item:"+this.props.layerId+":copy"}
-          action={'duplicate'}
-          classBlockName="duplicate"
-          onClick={e => this.props.onLayerCopy(this.props.layerId)}
-        />
-        <IconAction
-          wdKey={"layer-list-item:"+this.props.layerId+":toggle-visibility"}
-          action={visibilityAction}
-          classBlockName="visibility"
-          classBlockModifier={visibilityAction}
-          onClick={e => this.props.onLayerVisibilityToggle(this.props.layerId)}
-        />
+      <DraggableLabel {...this.props} />
+      <span style={{ flexGrow: 1 }} />
+      <IconAction
+        wdKey={"layer-list-item:" + this.props.layerId + ":delete"}
+        action={'delete'}
+        classBlockName="delete"
+        onClick={e => this.props.onLayerDestroy(this.props.layerId)}
+      />
+      <IconAction
+        wdKey={"layer-list-item:" + this.props.layerId + ":copy"}
+        action={'duplicate'}
+        classBlockName="duplicate"
+        onClick={e => this.props.onLayerCopy(this.props.layerId)}
+      />
+      <IconAction
+        wdKey={"layer-list-item:" + this.props.layerId + ":toggle-visibility"}
+        action={visibilityAction}
+        classBlockName="visibility"
+        classBlockModifier={visibilityAction}
+        onClick={e => this.props.onLayerVisibilityToggle(this.props.layerId)}
+      />
     </li>
   }
 }

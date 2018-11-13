@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import StringInput from './StringInput'
 import NumberInput from './NumberInput'
 import Button from '../Button'
-import {MdDelete} from 'react-icons/md'
+import { MdDelete } from 'react-icons/md'
 import DocLabel from '../fields/DocLabel'
 
 
@@ -47,8 +47,8 @@ class DynamicArrayInput extends React.Component {
 
   render() {
     const inputs = this.values.map((v, i) => {
-      const deleteValueBtn= <DeleteValueButton onClick={this.deleteValue.bind(this, i)} />
-      const input = this.props.type === 'number' 
+      const deleteValueBtn = <DeleteValueButton onClick={this.deleteValue.bind(this, i)} />
+      const input = this.props.type === 'number'
         ? <NumberInput
           value={v}
           onChange={this.changeValue.bind(this, i)}
@@ -62,7 +62,7 @@ class DynamicArrayInput extends React.Component {
         style={this.props.style}
         key={i}
         className="maputnik-array-block"
-        >
+      >
         <div className="maputnik-array-block-action">
           {deleteValueBtn}
         </div>

@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import {Controlled as CodeMirror} from 'react-codemirror2'
+import { Controlled as CodeMirror } from 'react-codemirror2'
 import InputBlock from '../inputs/InputBlock'
 import StringInput from '../inputs/StringInput'
 
@@ -41,7 +41,7 @@ class JSONEditor extends React.Component {
       // If the structure is still the same do not update
       // because it affects editing experience by reformatting all the time
       return nextState.code !== JSON.stringify(parsedLayer, null, 2)
-    } catch(err) {
+    } catch (err) {
       return true
     }
   }
@@ -50,7 +50,7 @@ class JSONEditor extends React.Component {
     try {
       const parsedLayer = JSON.parse(newCode)
       this.props.onChange(parsedLayer)
-    } catch(err) {
+    } catch (err) {
       console.warn(err)
     } finally {
       this.setState({
@@ -68,7 +68,7 @@ class JSONEditor extends React.Component {
 
   render() {
     const codeMirrorOptions = {
-      mode: {name: "javascript", json: true},
+      mode: { name: "javascript", json: true },
       tabSize: 2,
       theme: 'maputnik',
       viewportMargin: Infinity,

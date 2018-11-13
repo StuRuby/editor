@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import {latest} from '@mapbox/mapbox-gl-style-spec'
+import { latest } from '@mapbox/mapbox-gl-style-spec'
 import InputBlock from '../inputs/InputBlock'
 import StringInput from '../inputs/StringInput'
 import NumberInput from '../inputs/NumberInput'
@@ -81,7 +81,7 @@ class TileURLSourceEditor extends React.Component {
         />
       </InputBlock>
       {this.props.children}
-  </div>
+    </div>
 
   }
 }
@@ -117,7 +117,7 @@ class SourceTypeEditor extends React.Component {
       source: this.props.source,
       onChange: this.props.onChange,
     }
-    switch(this.props.mode) {
+    switch (this.props.mode) {
       case 'geojson': return <GeoJSONSourceEditor {...commonProps} />
       case 'tilejson_vector': return <TileJSONSourceEditor {...commonProps} />
       case 'tilexyz_vector': return <TileURLSourceEditor {...commonProps} />

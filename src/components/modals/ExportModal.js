@@ -3,13 +3,13 @@ import PropTypes from 'prop-types'
 import Slugify from 'slugify'
 import { saveAs } from 'file-saver'
 
-import {format} from '@mapbox/mapbox-gl-style-spec'
+import { format } from '@mapbox/mapbox-gl-style-spec'
 import InputBlock from '../inputs/InputBlock'
 import StringInput from '../inputs/StringInput'
 import CheckboxInput from '../inputs/CheckboxInput'
 import Button from '../Button'
 import Modal from './Modal'
-import {MdFileDownload} from 'react-icons/md'
+import { MdFileDownload } from 'react-icons/md'
 import style from '../../libs/style'
 
 
@@ -39,13 +39,13 @@ class ExportModal extends React.Component {
   downloadStyle() {
     const tokenStyle = format(stripAccessTokens(style.replaceAccessTokens(this.props.mapStyle)));
 
-    const blob = new Blob([tokenStyle], {type: "application/json;charset=utf-8"});
+    const blob = new Blob([tokenStyle], { type: "application/json;charset=utf-8" });
     let exportName;
-    if(this.props.mapStyle.name) {
+    if (this.props.mapStyle.name) {
       exportName = Slugify(this.props.mapStyle.name, {
-                     replacement: '_',
-                     lower: true
-                   })
+        replacement: '_',
+        lower: true
+      })
     } else {
       exportName = this.props.mapStyle.id
     }

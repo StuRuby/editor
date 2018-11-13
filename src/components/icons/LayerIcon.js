@@ -1,9 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import LineIcon from './LineIcon.jsx'
+import LineIcon from './LineIcon.js'
 import FillIcon from './FillIcon.js'
-import SymbolIcon from './SymbolIcon.jsx'
+import SymbolIcon from './SymbolIcon.js'
 import BackgroundIcon from './BackgroundIcon.js'
 import CircleIcon from './CircleIcon.js'
 

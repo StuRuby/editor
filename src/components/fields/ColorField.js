@@ -28,7 +28,7 @@ class ColorField extends React.Component {
   //and scrollbars so I have to fallback to JavaScript
   calcPickerOffset = () => {
     const elem = this.colorInput
-    if(elem) {
+    if (elem) {
       const pos = elem.getBoundingClientRect()
       return {
         top: pos.top,
@@ -51,7 +51,7 @@ class ColorField extends React.Component {
     try {
       return Color(this.props.value).rgb()
     }
-    catch(err) {
+    catch (err) {
       console.warn("Error parsing color: ", err);
       return Color("rgb(255,255,255)");
     }
@@ -71,8 +71,8 @@ class ColorField extends React.Component {
     const picker = <div
       className="maputnik-color-picker-offset"
       style={{
-	      position: 'fixed',
-	      zIndex: 1,
+        position: 'fixed',
+        zIndex: 1,
         left: offset.left,
         top: offset.top,
       }}>

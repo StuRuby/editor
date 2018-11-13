@@ -10,13 +10,13 @@ function getFieldSpec(spec, layerType, fieldName) {
   const groupName = getGroupName(spec, layerType, fieldName)
   const group = spec[groupName + '_' + layerType]
   const fieldSpec = group[fieldName]
-  if(iconProperties.indexOf(fieldName) >= 0) {
+  if (iconProperties.indexOf(fieldName) >= 0) {
     return {
       ...fieldSpec,
       values: spec.$root.sprite.values
     }
   }
-  if(fieldName === 'text-font') {
+  if (fieldName === 'text-font') {
     return {
       ...fieldSpec,
       values: spec.$root.glyphs.values
@@ -26,7 +26,7 @@ function getFieldSpec(spec, layerType, fieldName) {
 }
 
 function getGroupName(spec, layerType, fieldName) {
-  const paint  = spec['paint_' + layerType] || {}
+  const paint = spec['paint_' + layerType] || {}
   if (fieldName in paint) {
     return 'paint'
   } else {
@@ -44,7 +44,7 @@ export default class PropertyGroup extends React.Component {
 
   onPropertyChange = (property, newValue) => {
     const group = getGroupName(this.props.spec, this.props.layer.type, property)
-    this.props.onChange(group , property, newValue)
+    this.props.onChange(group, property, newValue)
   }
 
   render() {
