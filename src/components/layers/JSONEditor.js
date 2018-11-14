@@ -1,3 +1,6 @@
+/** 
+ * Json Editor Block
+*/
 import React from 'react'
 import PropTypes from 'prop-types'
 

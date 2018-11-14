@@ -1,3 +1,6 @@
+/** 
+ * 动态数组Input
+*/
 import React from 'react'
 import PropTypes from 'prop-types'
 import StringInput from './StringInput'

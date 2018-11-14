@@ -240,8 +240,7 @@ export default class LayerEditor extends React.Component {
       items[id].handler();
     }
 
-    return <div className="maputnik-layer-editor"
-    >
+    return <div className="maputnik-layer-editor">
       <header>
         <div className="layer-header">
           <h2 className="layer-header__title">

@@ -209,14 +209,14 @@ export default class Toolbar extends React.Component {
             </select>
           </ToolbarSelect>
 
-          <ToolbarLink href={"https://github.com/maputnik/editor/wiki"}>
+          {/* <ToolbarLink href={"https://github.com/maputnik/editor/wiki"}>
             <MdHelpOutline />
             <IconText>Help</IconText>
-          </ToolbarLink>
-          <ToolbarLinkHighlighted href={"https://gregorywolanski.typeform.com/to/cPgaSY"}>
+          </ToolbarLink> */}
+          {/* <ToolbarLinkHighlighted href={"https://gregorywolanski.typeform.com/to/cPgaSY"}>
             <MdAssignmentTurnedIn />
             <IconText>Take the Maputnik Survey</IconText>
-          </ToolbarLinkHighlighted>
+          </ToolbarLinkHighlighted> */}
         </div>
       </div>
     </div>

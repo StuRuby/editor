@@ -1,3 +1,6 @@
+/** 
+ * Collapser Icon
+*/
 import React from 'react'
 import PropTypes from 'prop-types'
 import { MdArrowDropDown, MdArrowDropUp } from 'react-icons/md'

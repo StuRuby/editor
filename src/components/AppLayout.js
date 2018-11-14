@@ -23,25 +23,28 @@ class AppLayout extends React.Component {
   }
 
   render() {
-    return <div className="maputnik-layout">
-      {this.props.toolbar}
-      <div className="maputnik-layout-list">
-        <ScrollContainer>
-          {this.props.layerList}
-        </ScrollContainer>
+    return (
+      <div className="maputnik-layout">
+        {this.props.toolbar}
+        <div className="maputnik-layout-list">
+          <ScrollContainer>
+            {this.props.layerList}
+          </ScrollContainer>
+        </div>
+        <div className="maputnik-layout-drawer">
+          <ScrollContainer>
+            {this.props.layerEditor}
+          </ScrollContainer>
+        </div>
+        {this.props.map}
+        {
+          this.props.bottom && <div className="maputnik-layout-bottom">
+            {this.props.bottom}
+          </div>
+        }
+        {this.props.modals}
       </div>
-      <div className="maputnik-layout-drawer">
-        <ScrollContainer>
-          {this.props.layerEditor}
-        </ScrollContainer>
-      </div>
-      {this.props.map}
-      {this.props.bottom && <div className="maputnik-layout-bottom">
-        {this.props.bottom}
-      </div>
-      }
-      {this.props.modals}
-    </div>
+    );
   }
 }
 
